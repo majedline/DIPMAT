@@ -54,7 +54,6 @@ module.exports = function(app) {
 
   //Get Proposed Symptoms
   app.get("/getProposedSymptoms", function(req, res) {
-
     var user = {
       symptoms: req.body.symptoms,
       gender: req.body.gender,
