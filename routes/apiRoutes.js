@@ -48,7 +48,10 @@ module.exports = function(app) {
       if (unirestRes.error) {
         throw new Error(unirestRes.error);
       }
-      res.json(unirestRes.body);
+      var hbsObject = {
+        symptoms: unirestRes.body
+      };
+      res.render("index", hbsObject);
     });
   });
 
