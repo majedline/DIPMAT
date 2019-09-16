@@ -2,6 +2,13 @@
     line-height: 2.5;
   }
   .logo {
-    font-size: 50px !important;
-    color: pink;
+    font-size: 100px !important;
+    color: #6a1b9a;
+  }
+  .companyName {
+    font-family: 'Fredoka One', cursive;
+  }
+  .parallax-container-main {
+    min-height: 1000px;
+    max-height: 1080px;
   }
