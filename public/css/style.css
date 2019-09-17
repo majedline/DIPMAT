@@ -12,3 +12,6 @@
     min-height: 1000px;
     max-height: 1080px;
   }
+  .overlay {
+    z-index:999;
+  }

@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 var db = require("../models");
 var unirest = require("unirest");
+var curUser = {};
 
 module.exports = function(app) {
   // Get all examples
@@ -24,6 +25,12 @@ module.exports = function(app) {
     ) {
       res.json(dbExample);
     });
+  });
+
+  app.post("/submit-aboutme", function(req, res) {
+    curUser = req.body;
+    console.log(curUser);
+    res.json(200);
   });
 
   // ----------------------------------------- Api Medic api Routes -----------------------------------------

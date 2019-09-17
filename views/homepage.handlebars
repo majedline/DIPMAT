@@ -9,15 +9,17 @@
     <div class="container">
       <br><br>
 
-      <section data-aos="fade-up" data-aos-duration="2000"><i class="fas fa-heartbeat logo light-blue-text text-lighten-3"></i> <h1 class="companyName header center light-blue-text text-lighten-5">Some Name For the Site</h1> </section>
-      
-      <div class="row center " data-aos="fade-up"
-     data-aos-duration="1000" data-aos-delay="2000">
+      <section data-aos="fade-up" data-aos-duration="2000"><i
+          class="fas fa-heartbeat logo light-blue-text text-lighten-3"></i>
+        <h1 class="companyName header center light-blue-text text-lighten-5">Some Name For the Site</h1>
+      </section>
+
+      <div class="row center " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2000">
         <h5 class="header col s12 light-blue-text text-lighten-4">Were here to help</h5>
       </div>
       <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1" data-aos="fade-up"
-     data-aos-duration="1000" data-aos-delay="3000">Get Started</a>
+        <a href="#aboutyou" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"
+          data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">Get Started</a>
       </div>
       <br><br>
 
@@ -31,35 +33,41 @@
   <div class="section">
 
     <!--   Icon Section   -->
+    <h5 id="aboutyou" class="center light brown-text scrollspy" data-aos="fade-up" data-aos-duration="1000">About You
+    </h5>
     <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center">Speeds up development</h5>
-
-          <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+      <form class="col s12 about-me">
+        <div class="row">
+          <div class="input-field col s6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
         </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-          <h5 class="center">User Experience Focused</h5>
-
-          <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+        <div class="row">
+          <div class="input-field col s12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+            <input id="birthYear" type="text" class="validate">
+            <label for="birthYear">Year of Birth</label>
+          </div>
         </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-          <h5 class="center">Easy to work with</h5>
-
-          <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+        <div class="row">
+          <div class="input-field col s12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" id="gender">
+            <select>
+              <option value="" disabled selected>Choose your option</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">Perfer Not To say</option>
+            </select>
+            <label>Gender</label>
+            <button class="btn waves-effect waves-light" type="submit">Continue
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-
   </div>
 </div>
 
@@ -68,7 +76,9 @@
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">Company Bio</h5>
-        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full
+          time job. Any amount would help support and continue development on this project and is greatly appreciated.
+        </p>
 
 
       </div>
@@ -94,10 +104,7 @@
   </div>
   <div class="footer-copyright">
     <div class="container">
-    Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
     </div>
   </div>
 </footer>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>

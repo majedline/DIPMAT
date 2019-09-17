@@ -1,4 +1,27 @@
-// Get references to page elements
+
+$(".about-me").on("submit", function (event) {
+  event.preventDefault();
+  var newUser = {
+      gender: $("#gender").val().trim(),
+      birthYear: $("#birthYear").val().trim()
+  };
+  $.ajax("/submit-aboutme", {
+      type: "POST",
+      data: newUser
+  }).then(
+      function () {
+          console.log("created new Burger");
+          // Reload the page to get the updated list
+          location.reload();
+      }
+  );
+});
+
+
+
+
+
+/* // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -97,3 +120,4 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+ */
