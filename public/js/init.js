@@ -2,7 +2,6 @@
   $(function() {
     $(".sidenav").sidenav();
     $(".parallax").parallax();
-    $('.datepicker').datepicker();
     $('select').formSelect();
     $('.scrollspy').scrollSpy();
     AOS.init();

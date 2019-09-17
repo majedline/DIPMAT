@@ -1,24 +1,14 @@
 
 $(".about-me").on("submit", function (event) {
   event.preventDefault();
-  var newUser = {
-      gender: $("#gender").val().trim(),
-      birthYear: $("#birthYear").val().trim()
-  };
-  $.ajax("/submit-aboutme", {
-      type: "POST",
-      data: newUser
-  }).then(
-      function () {
-          console.log("created new Burger");
-          // Reload the page to get the updated list
-          location.reload();
-      }
-  );
+  var gender = $("#gender").val();
+  var birthYear = $("#birthYear").val().trim();
+  //Store Data locally For later Post Calls 
+  localStorage.setItem("gender", gender);
+  localStorage.setItem("birthYear", birthYear);
+
+  //
 });
-
-
-
 
 
 /* // Get references to page elements
