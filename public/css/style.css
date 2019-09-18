@@ -31,3 +31,6 @@ opacity: 0;
   min-height: 200px !important;
   max-height: 200px !important;
 }
+#bodySpecific {
+  opacity: 0;
+  }
