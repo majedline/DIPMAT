@@ -1,17 +1,33 @@
 .list-group-item {
-    line-height: 2.5;
-  }
-  .logo {
-    font-size: 100px !important;
-    color: #6a1b9a;
-  }
-  .companyName {
-    font-family: 'Fredoka One', cursive;
-  }
-  .parallax-container-main {
-    min-height: 1000px;
-    max-height: 1080px;
-  }
-  .overlay {
-    z-index:999;
-  }
+  line-height: 2.5;
+}
+.logo {
+  font-size: 100px !important;
+  color: #6a1b9a;
+}
+.companyName {
+  font-family: 'Fredoka One', cursive;
+}
+.parallax-container-main {
+  min-height: 1000px;
+  max-height: 1080px;
+}
+#preloader {
+  opacity: 0;
+}
+
+.overlay {
+  z-index:999;
+}
+
+#bodyGeneral {
+opacity: 0;
+}
+.logo-sub {
+  font-size: 50px !important;
+  color: #6a1b9a;
+}
+.parallax-container-sub {
+  min-height: 200px !important;
+  max-height: 200px !important;
+}

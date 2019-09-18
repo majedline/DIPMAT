@@ -1,39 +1,60 @@
 /* eslint-disable camelcase */
 var db = require("../models");
 var unirest = require("unirest");
-var curUser = {};
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  //Get Body Locations (General)
+  app.get("/getBodyGen", function(req, res) {
+    var unirestReq = unirest(
+      "GET",
+      "https://priaid-symptom-checker-v1.p.rapidapi.com/body/locations"
+    );
+
+    unirestReq.query({
+      language: "en-gb"
+    });
+
+    unirestReq.headers({
+      "x-rapidapi-host": "priaid-symptom-checker-v1.p.rapidapi.com",
+      "x-rapidapi-key": "99a794a1b2msh418e261da3bc802p188864jsn1fd4fddc6a5f"
+    });
+
+    unirestReq.end(function(unirestRes) {
+      if (unirestRes.error) {
+        throw new Error(unirestRes.error);
+      }
+      var hbsObject = {
+        locations: unirestRes.body
+      };
+      res.render("bodyGeneral", hbsObject);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  //Get Body Locations (Sub Locations)
+  app.get("/getBodySpecific", function(req, res) {
+    var unirestReq = unirest(
+      "GET",
+      "https://priaid-symptom-checker-v1.p.rapidapi.com/body/locations/15"
+    );
+
+    unirestReq.query({
+      language: "en-gb"
+    });
+
+    unirestReq.headers({
+      "x-rapidapi-host": "priaid-symptom-checker-v1.p.rapidapi.com",
+      "x-rapidapi-key": "99a794a1b2msh418e261da3bc802p188864jsn1fd4fddc6a5f"
+    });
+
+    unirestReq.end(function(unirestRes) {
+      if (unirestRes.error) {
+        throw new Error(unirestRes.error);
+      }
+
+      res.render("bodyGeneral", hbsObject);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
-
-  app.post("/submit-aboutme", function(req, res) {
-    curUser = req.body;
-    console.log(curUser);
-    res.json(200);
-  });
-
-  // ----------------------------------------- Api Medic api Routes -----------------------------------------
   //Get Full Symptoms List
   app.get("/getSymptoms", function(req, res) {
     var unirestReq = unirest(
