@@ -27,35 +27,71 @@ module.exports = function (app) {
   // });
 
   /****************RECORD API**********************/
+ 
+  // This will add a record, list of symptoms, and diagnosis
   app.post("/api/addRecord", function (req, res) {
-    var ageInput = req.body.age;
-    var genderInput = convertGender(req.body.gender);
-    var cityInput = req.body.city;
 
+    var ageInput = new Date().getFullYear() - req.body.user.birthYear;
+    var genderInput = convertGender(req.body.user.gender);
+    var cityInput = req.body.city;
+    var symptomList = req.body.symptoms;
+    var diagnosisList = req.body.diagnosis;
+
+    // build the record
     var recordData = { age: ageInput, gender: genderInput, city: cityInput };
 
+    // add the record
     db.Record.create(recordData).then(function (dbRecord) {
+
+      // add the symptoms of the record
+      for (var i = 0; i < symptomList.length; i++) {
+        var apiMedicSymptomIDIn = symptomList[i].id;
+        var symptomNameIn = symptomList[i].name;
+        var recordIDIn = dbRecord.id;
+
+        // build the symptom
+        var symptomRecord = { apiMedicSymptomID: apiMedicSymptomIDIn, name: symptomNameIn, RecordId: recordIDIn };
+        // add the symptom
+        db.Symptoms.create(symptomRecord).then(function (dbSymptom) { });
+      }
+
+      // add the diagnosis or the record
+      for (var i = 0; i < diagnosisList.length; i++) {
+        var apiMedicDiagnosisIDIn = diagnosisList[i].id;
+        var diagnosisNameIn = diagnosisList[i].name;
+        var accuracyIn = diagnosisList[i].accuracy;
+        var recordIDIn = dbRecord.id;
+
+        // build the diagnosis
+        var diagnosisRecord = { apiMedicIssueID: apiMedicDiagnosisIDIn, name: diagnosisNameIn, accuracy: accuracyIn, RecordId: recordIDIn };
+        // add the diabnosis
+        db.Diagnosis.create(diagnosisRecord).then(function (dbDiagnosis) { });
+      }
+
+      console.log(dbRecord.id);
       res.json(dbRecord);
     });
   });
 
+
+
   app.get("/api/GetOneDayRecordsInCity/:cityName", function (req, res) {
-    var startDate = (Date.now()) - 1;
-    var endDate = Date.now()+1;
+    var startDate = Date.now() + 1;
+    var endDate = Date.now() + 1;
     var cityName = req.params.cityName;
 
-    GetRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res);
+    getRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res);
   });
 
   app.get("/api/GetOneWeekRecordsInCity/:cityName", function (req, res) {
     var startDate = (Date.now()) - 7;
-    var endDate = Date.now()+1;
+    var endDate = Date.now() + 1;
     var cityName = req.params.cityName;
 
-    GetRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res);
+    getRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res);
   });
 
-  function GetRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res) {
+  function getRecordsInCityBasedOnDateParam(cityName, startDate, endDate, res) {
     console.log("GetRecordsInCityBasedOnDateParam: " + startDate, endDate, cityName);
     db.Record.findAll({
       where: {
@@ -69,6 +105,7 @@ module.exports = function (app) {
     });
   }
 
+  // helper function
   function convertGender(input) {
     var loweredInput = input.toLowerCase();
     if (loweredInput === "female") {
