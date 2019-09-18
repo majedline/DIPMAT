@@ -131,17 +131,18 @@ module.exports = function(app) {
   //   }]
   function getAllDiagnosisStatsBasedOnCityName(cityNameIn, res) {
     var query =
-      "SELECT d.name, r.city,\
+      "SELECT d1.name, r1.city,\
         COUNT(1) AS total,\
         SUM(oneDigPercentPts) AS percentage\
-      FROM dipmat.diagnoses as d left join records as r on d.recordID = r.id\
+      FROM dipmat.diagnoses as d1 left join records as r1 on d1.recordID = r1.id\
       CROSS JOIN \
         (\
            SELECT 100 / CAST(COUNT(1) AS DECIMAL(15,4)) AS oneDigPercentPts \
-           FROM dipmat.diagnoses as d left join records as r on d.recordID = r.id \
-        ) t\
-      WHERE r.city like :cityName\
-      GROUP BY d.name, r.city ";
+           FROM dipmat.diagnoses as d2 left join records as r2 on d2.recordID = r2.id \
+           WHERE r2.city like :cityName\
+           ) t\
+      WHERE r1.city like :cityName\
+      GROUP BY d1.name, r1.city ";
 
     db.sequelize
       .query(query, {
