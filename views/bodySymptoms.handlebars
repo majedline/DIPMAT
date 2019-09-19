@@ -1,0 +1,91 @@
+<!-- 
+  bodySymptoms Handlebars File 
+  HTML using MateralizeCSS Design
+-->
+<section id="bodySymptoms">
+    <div id="index-banner" class="parallax-container parallax-container-sub">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <i class="fas fa-heartbeat logo-sub light-blue-text text-lighten-3">
+                    <h5 class="companyName header center light-blue-text text-lighten-5">Company Name</h5>
+                </i>
+                <h4 class="companyName header center light-blue-text text-lighten-5">Symptom Selector - Select Primary
+                    Symptom</h4>
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img src="/images/ggBridge.png" alt="Unsplashed background img 1"></div>
+    </div>
+
+    <!-- 3. Info Container 1 -->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="row">
+                        <div class="col s12 symptomsContainer">
+                            <label for=".symptomsContainer">Choose a symptom you are experiencing</label><br>
+                            {{#each symptoms}}
+                            <button class="waves-effect waves-light btn-small buttonSpacing"
+                                value="{{ID}}">{{Name}}</button>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <button class="btn-large waves-effect waves-light disabled" type="submit" name="action"
+                        id="continueSymptom">Continue
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+                        it's our
+                        full
+                        time job. Any amount would help support and continue development on this project and is greatly
+                        appreciated.
+                    </p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+</section>
+<section id="preloader"></section>
+{{!-- Front End Js Scripts --}}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script src="/js/bodySymp.js"></script>

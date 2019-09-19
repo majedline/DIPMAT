@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#bodyGeneral").animate({ opacity: 1 });
     $("#bodySelect").on('change', function () {
         bodySel = this.value;
+        $("#continueGen").removeClass("disabled");
         if (this.value === "16") {
             $("#bodyVector").attr("src", "/images/BodyVectors/APB.png");
         } else if (this.value === "7") {
@@ -27,13 +28,11 @@ $(document).ready(function () {
             $("#preloader").append("<div class=\"preloader-wrapper big active\"><div class=\"spinner-layer spinner-blue-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>");
 
             $("#preloader").animate({ opacity: 1 }, function () {
-                console.log("good");
                 $.ajax({
                     type: "post",
                     url: "/getBodySpecific/post",
                     data: bodyData
-                }).then(function (res) {
-                    console.log("good" + res);
+                }).then(function () {
                     location.href = "/getBodySpecific";
                 });
             });

@@ -34,7 +34,6 @@ module.exports = function(app) {
 
   //Get Body Locations (Sub Locations)
   app.post("/getBodySpecific/post", function(req, res) {
-    console.log("good");
     var bodyGen = req.body.bodyGen;
     var URL =
       "https://priaid-symptom-checker-v1.p.rapidapi.com/body/locations/" +
@@ -57,41 +56,55 @@ module.exports = function(app) {
       tempObj = {
         locations: unirestRes.body
       };
-      console.log(unirestRes.body);
       res.json({ id: 200 });
     });
   });
 
+  //HTML Route to render Page with new info
   app.get("/getBodySpecific", function(req, res) {
     res.render("bodySpecific", tempObj);
   });
 
-  //Get Full Symptoms List
-  app.get("/getSymptoms", function(req, res) {
-    var unirestReq = unirest(
-      "GET",
-      "https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms"
-    );
+  //Get Symptoms In Body Location
+  app.post("/getBodySymptoms/post", function(req, res) {
+    
+    
+
+    console.log(req.body);
+    var bodySpec = req.body.bodySpec;
+    var userGender = "man"//req.body.userGender;
+    console.log(bodySpec + userGender);
+    var url1 =
+      "https://priaid-symptom-checker-v1.p.rapidapi.com/symptoms/" +
+      bodySpec +
+      "/" +
+      userGender;
+    console.log(url1);
+    var unirestReq = unirest("GET", url1);
 
     unirestReq.query({
-      format: "json",
       language: "en-gb"
     });
 
     unirestReq.headers({
       "x-rapidapi-host": "priaid-symptom-checker-v1.p.rapidapi.com",
-      "x-rapidapi-key": rapidapiKey
+      "x-rapidapi-key": "392e514bc5mshf76ed8b87ea0f07p1a1f82jsn203533661587"
     });
 
     unirestReq.end(function(unirestRes) {
       if (unirestRes.error) {
         throw new Error(unirestRes.error);
       }
-      var hbsObject = {
+      tempObj = {
         symptoms: unirestRes.body
       };
-      res.render("index", hbsObject);
+      res.json({ id: 200 });
     });
+  });
+
+  app.get("/getBodySymptoms", function(req, res) {
+    console.log("Test1");
+    res.render("bodySymptoms", tempObj);
   });
 
   //Get Proposed Symptoms

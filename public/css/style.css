@@ -19,6 +19,9 @@
 .overlay {
   z-index:999;
 }
+.buttonSpacing {
+  margin: 5px;
+}
 
 #bodyGeneral {
 opacity: 0;
@@ -33,4 +36,8 @@ opacity: 0;
 }
 #bodySpecific {
   opacity: 0;
-  }
+}
+#bodySymptoms {
+  opacity: 0;
+}
+  
