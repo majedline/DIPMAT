@@ -121,6 +121,8 @@ module.exports = function(app) {
     getAllDiagnosisStatsBasedOnCityName("%" + req.params.cityName + "%", res);
   });
 
+  /*************************************************** */
+
   // function that actually does the work of getting the diagnosis based on the city name.
   // if the cityNameIn is % then this will return for all cities in the db. Sample:
   // [{
