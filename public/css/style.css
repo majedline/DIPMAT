@@ -1,6 +1,23 @@
+body{
+  background-image: url(http://www.webdesigndev.com/wp-content/uploads/2013/06/Cubes-White-Photoshop-Pattern.jpg);
+  background-repeat:repeat;
+
+  display: flex !important;
+  min-height: 100vh !important;
+  flex-direction: column !important;
+}
+
+main {
+  flex: 1 0 auto !important;
+}
 .list-group-item {
   line-height: 2.5;
 }
+.genText{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
 .logo {
   font-size: 100px !important;
   color: #6a1b9a;

@@ -1,20 +1,23 @@
 $(document).ready(function () {
-    var sympSel;
-    $("#bodySymptoms").animate({ opacity: 1 });
+    var initSymp = JSON.parse(localStorage.getItem("symp1"));
+    var sympArr = [];
+    $("#propSymptoms").animate({ opacity: 1 });
     $(".sympBtn").on('click', function () {
         sympSel = {
             value: this.value,
             name: this.name
         }
-        console.log(sympSel.value);
-        localStorage.setItem("symp1", JSON.stringify(sympSel));
-        $("#bodySymptoms").animate({ opacity: 0 }, function () {
-            $("#bodySymptoms").empty();
+        sympArr = [initSymp.value,sympSel.value]
+        localStorage.setItem("symp2", JSON.stringify(sympSel));
+        $("#propSymptoms").animate({ opacity: 0 }, function () {
+            $("#propSymptoms").empty();
             loadingPage();
 
             $("#preloader").animate({ opacity: 1 }, function () {
-                var postData = {
-                    symptoms: JSON.stringify([sympSel.value]),//sympSel.value, //Because this is inital symp, only 1 val is needed
+                console.log(JSON.stringify(sympArr));
+                
+                /* var postData = {
+                    symptoms: JSON.stringify(sympArr),//sympSel.value, //Because this is inital symp, only 1 val is needed
                     gender: localStorage.getItem("gender"),
                     birthYear: localStorage.getItem("birthYear")
                 }
@@ -23,8 +26,8 @@ $(document).ready(function () {
                     url: "/getProposedSymptoms/post",
                     data: postData
                 }).then(function () {
-                    location.href = "/getProposedSymptoms";
-                });
+                    location.href = "/getDiag";
+                }); */
             });
         });
     });

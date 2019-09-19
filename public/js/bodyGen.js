@@ -20,12 +20,14 @@ $(document).ready(function () {
     });
 
     $("#continueGen").on('click', function () {
+        localStorage.setItem("bodyGen", bodySel);
         var bodyData = {
             bodyGen: bodySel
         }
+        $("#pageFooter").animate({ opacity: 0 });
         $("#bodyGeneral").animate({ opacity: 0 }, function () {
             $("#bodyGeneral").empty();
-            $("#preloader").append("<div class=\"preloader-wrapper big active\"><div class=\"spinner-layer spinner-blue-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div>");
+            loadingPage();
 
             $("#preloader").animate({ opacity: 1 }, function () {
                 $.ajax({
@@ -39,3 +41,7 @@ $(document).ready(function () {
         });
     });
 });
+
+var loadingPage = function (){
+    $("#preloader").append("<br><br><br><br><br><br><br><br><br><br><div class=\"container center\"><div class=\"preloader-wrapper big active\"><div class=\"spinner-layer spinner-blue-only\"><div class=\"circle-clipper left\"><div class=\"circle\"></div></div><div class=\"gap-patch\"><div class=\"circle\"></div></div><div class=\"circle-clipper right\"><div class=\"circle\"></div></div></div></div></div>");
+  }
