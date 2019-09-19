@@ -13,21 +13,19 @@ $(document).ready(function () {
             $("#propSymptoms").empty();
             loadingPage();
 
-            $("#preloader").animate({ opacity: 1 }, function () {
-                console.log(JSON.stringify(sympArr));
-                
-                /* var postData = {
+            $("#preloader").animate({ opacity: 1 }, function () {                
+                var postData = {
                     symptoms: JSON.stringify(sympArr),//sympSel.value, //Because this is inital symp, only 1 val is needed
                     gender: localStorage.getItem("gender"),
                     birthYear: localStorage.getItem("birthYear")
                 }
                 $.ajax({
                     type: "post",
-                    url: "/getProposedSymptoms/post",
+                    url: "/getDiag/post",
                     data: postData
                 }).then(function () {
                     location.href = "/getDiag";
-                }); */
+                });
             });
         });
     });

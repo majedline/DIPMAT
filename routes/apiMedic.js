@@ -2,6 +2,7 @@ var unirest = require("unirest");
 var rapidapiKey = "392e514bc5mshf76ed8b87ea0f07p1a1f82jsn203533661587";
 var tempObj = {};
 
+
 module.exports = function (app) {
      //-------------Get Body Locations (General)-------------
      app.get("/getBodyGen", function (req, res) {
@@ -107,15 +108,11 @@ module.exports = function (app) {
 
      //-------------Get Proposed Symptoms-------------
      app.post("/getProposedSymptoms/post", function (req, res) {
-          console.log(req.body.symptoms)
           var user = {
                symptoms: req.body.symptoms,
                gender: req.body.gender,
                birthYear: req.body.birthYear
           };
-          console.log(user)
-          console.log(user.symptoms)
-
 
           var unirestReq = unirest(
                "GET",
@@ -147,4 +144,43 @@ module.exports = function (app) {
      app.get("/getProposedSymptoms", function (req, res) {
           res.render("proposedSymptoms", tempObj);
      });
+
+     //Get Diagnosis
+     app.post("/getDiag/post", function (req, res) {
+          var unirestReq = unirest("GET", "https://priaid-symptom-checker-v1.p.rapidapi.com/diagnosis");
+
+          var user = {
+               symptoms: req.body.symptoms,
+               gender: req.body.gender,
+               birthYear: req.body.birthYear
+          };
+
+          unirestReq.query({
+               symptoms: user.symptoms,
+               gender: user.gender,
+               year_of_birth: user.birthYear,
+               language: "en-gb"
+          });
+
+          unirestReq.headers({
+               "x-rapidapi-host": "priaid-symptom-checker-v1.p.rapidapi.com",
+               "x-rapidapi-key": "392e514bc5mshf76ed8b87ea0f07p1a1f82jsn203533661587"
+          });
+
+
+          unirestReq.end(function (unirestRes) {
+               if (unirestRes.error) {
+                    throw new Error(unirestRes.error);
+               }
+               tempObj = {
+                    diagnosis: unirestRes.body
+               };
+               res.json({ id: 200 });
+               console.log(unirestRes.body);
+          });
+     });
+     app.get("/getDiag", function (req, res) {
+          res.render("diagPage", tempObj);
+     });
+
 };
