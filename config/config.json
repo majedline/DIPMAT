@@ -2,7 +2,7 @@
      "development": {
        "username": "root",
        "password": "Samsungs1212",
-       "database": "exampledb",
+       "database": "dipmat",
        "host": "localhost",
        "dialect": "mysql"
      },
