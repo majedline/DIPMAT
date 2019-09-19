@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Diagnosis</h5>
+
+
+          <table class="highlight striped responsive-table">
+            <thead>
+              <tr>
+                <th>Diagnosis Name</th>
+                <th>City</th>
+                <th>Percentage of all diagnosis</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {{#each diagnosisResults.all}}
+              <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.city}}</td>
+                <td>{{percentage}}%</td>
+              </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+
+          <canvas id="myChart"></canvas>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+          <script>
+            
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+              // The type of chart we want to create
+              type: 'line',
+              
+              // The data for our dataset
+              data: {
+                labels: ['HIV', 'Arthritis', 'Heart Diseas', 'cancer', 'Asthma', 'Flue', 'cold'],
+                datasets: [{
+                  label: 'My First dataset',
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: [0, 10, 5, 2, 20, 30, 45]
+                }]
+              },
+
+              // Configuration options go here
+              options: {}
+            });
+          </script>
+
+
+          <a href="/">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
