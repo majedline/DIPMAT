@@ -2,7 +2,7 @@
 var db = require("../models");
 
 
-module.exports = function(app) {
+module.exports = function (app) {
   // // Get all examples
   // app.get("/api/examples", function (req, res) {
   //   db.Example.findAll({}).then(function (dbExamples) {
@@ -25,16 +25,29 @@ module.exports = function(app) {
   //     res.json(dbExample);
   //   });
   // });
+  app.post("/api/addRecord/test", function (req, res) {
+    console.log(req.body)
+  });
 
   /****************RECORD API**********************/
 
   // This will add a record, list of symptoms, and diagnosis
-  app.post("/api/addRecord", function(req, res) {
-    var ageInput = new Date().getFullYear() - req.body.user.birthYear;
-    var genderInput = convertGender(req.body.user.gender);
-    var cityInput = req.body.city.toUpperCase();
-    var symptomList = req.body.symptoms;
-    var diagnosisList = req.body.diagnosis;
+  app.post("/api/addRecord", function (request, res) {
+
+    var req = {
+      birthYear: request.body.birthYear,
+      gender: request.body.gender,
+      symptoms: JSON.parse(request.body.symptoms),
+      diagnosis: JSON.parse(request.body.diagnosis),
+      city: request.body.city
+    }
+    console.log(req);
+    
+    var ageInput = new Date().getFullYear() - parseInt(req.birthYear);
+    var genderInput = convertGender(req.gender);
+    var cityInput = req.city.toUpperCase();
+    var symptomList = req.symptoms;
+    var diagnosisList = req.diagnosis;
 
     // build the record
     var recordData = { age: ageInput, gender: genderInput, city: cityInput };
@@ -46,7 +59,7 @@ module.exports = function(app) {
     //     "symptoms": [{"id": 1, "name":"sneeze"}, {"id": 2, "name":"cough"}],
     //     "diagnosis": [{"id": 1, "name":"flu", "accuracy": 20}, {"id": 2, "name":"death", "accuracy": 40}]
     // }
-    db.Record.create(recordData).then(function(dbRecord) {
+    db.Record.create(recordData).then(function (dbRecord) {
       // add the symptoms of the record
       for (var i = 0; i < symptomList.length; i++) {
         var apiMedicSymptomIDIn = symptomList[i].id;
@@ -60,7 +73,7 @@ module.exports = function(app) {
           RecordId: recordIDIn
         };
         // add the symptom
-        db.Symptoms.create(symptomRecord).then(function(dbSymptom) {
+        db.Symptoms.create(symptomRecord).then(function (dbSymptom) {
           return dbSymptom;
         });
       }
@@ -80,7 +93,7 @@ module.exports = function(app) {
           RecordId: recordIDIn
         };
         // add the diabnosis
-        db.Diagnosis.create(diagnosisRecord).then(function(dbDiagnosis) {
+        db.Diagnosis.create(diagnosisRecord).then(function (dbDiagnosis) {
           return dbDiagnosis;
         });
       }
@@ -91,7 +104,7 @@ module.exports = function(app) {
   });
 
   // Get all reported records in the city in one day.
-  app.get("/api/GetOneDayRecordsInCity/:cityName", function(req, res) {
+  app.get("/api/GetOneDayRecordsInCity/:cityName", function (req, res) {
     var startDate = new Date() - 1000 * 60 * 60 * 24 * 1;
     var endDate = new Date() + 1000 * 60 * 60 * 24 * 1;
     var cityName = req.params.cityName;
@@ -100,7 +113,7 @@ module.exports = function(app) {
   });
 
   // get all reported records in the city in one week
-  app.get("/api/GetOneWeekRecordsInCity/:cityName", function(req, res) {
+  app.get("/api/GetOneWeekRecordsInCity/:cityName", function (req, res) {
     var startDate = new Date() - 1000 * 60 * 60 * 24 * 7;
     var endDate = new Date() + 1000 * 60 * 60 * 24 * 1;
     var cityName = req.params.cityName;
@@ -109,12 +122,12 @@ module.exports = function(app) {
   });
 
   // get all diagnosis stats. Sample:
-  app.get("/api/getAllDiagnosisStats/", function(req, res) {
+  app.get("/api/getAllDiagnosisStats/", function (req, res) {
     getAllDiagnosisStatsBasedOnCityName("%", res);
   });
 
   // get all diagnosis stats based on the city naame
-  app.get("/api/getAllDiagnosisStatsBasedOnCityName/:cityName", function(
+  app.get("/api/getAllDiagnosisStatsBasedOnCityName/:cityName", function (
     req,
     res
   ) {
@@ -151,7 +164,7 @@ module.exports = function(app) {
         replacements: { cityName: cityNameIn },
         type: db.sequelize.QueryTypes.SELECT
       })
-      .then(function(dbResult) {
+      .then(function (dbResult) {
         console.log(dbResult);
         res.json(dbResult);
       });
@@ -185,7 +198,7 @@ module.exports = function(app) {
         //   $between: [d1, d2]
         // }
       }
-    }).then(function(dbRecord) {
+    }).then(function (dbRecord) {
       res.json(dbRecord);
     });
   }
