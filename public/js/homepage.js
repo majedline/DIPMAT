@@ -1,4 +1,4 @@
-
+// Front End JS File for homepage.handlebars
 $(document).ready(function () {
   //Event To check if Gender was selected
   $("#gender").on('change', function () {

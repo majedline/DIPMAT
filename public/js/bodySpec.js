@@ -1,3 +1,4 @@
+// Front End JS File for bodySpecific.handlebars
 $(document).ready(function () {
     var bodySel;
     bodyGenInit(localStorage.getItem("bodyGen"))

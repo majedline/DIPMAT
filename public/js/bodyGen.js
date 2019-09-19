@@ -1,3 +1,4 @@
+// Front End JS File for bodyGeneral.handlebars
 $(document).ready(function () {
     var bodySel;
     $("#bodyGeneral").animate({ opacity: 1 });

@@ -1,3 +1,4 @@
+// Front End JS File for proposedSymptoms.handlebars
 $(document).ready(function () {
     var initSymp = JSON.parse(localStorage.getItem("symp1"));
     var sympArr = [];

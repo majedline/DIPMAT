@@ -1,3 +1,4 @@
+// Front End JS File for bodySymptoms.handlebars
 $(document).ready(function () {
     var sympSel;
     $("#bodySymptoms").animate({ opacity: 1 });
@@ -6,7 +7,6 @@ $(document).ready(function () {
             value: this.value,
             name: this.name
         }
-        console.log(sympSel.value);
         localStorage.setItem("symp1", JSON.stringify(sympSel));
         $("#bodySymptoms").animate({ opacity: 0 }, function () {
             $("#bodySymptoms").empty();
