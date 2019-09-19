@@ -42,9 +42,25 @@ module.exports = function(app) {
       })
       .then(function(dbResult) {
         console.log(dbResult);
+
+        var diagnosisList = [];
+        var percentageList = [];
+        for (var i = 0; i < dbResult.length; i++) {
+          diagnosisList.push(dbResult[i].name);
+          percentageList.push(dbResult[i].percentage);
+        }
+
+        var diagnosisResults = {
+          all: dbResult,
+          diagnosisListOnly: diagnosisList,
+          percentageListOnly: percentageList
+        };
+
+        //['Flu', 'Heart Problem', 'Stroke']
+        //[20, 10, 5]
         res.render("diagnosisstats", {
           msg: "diagnosisstats!",
-          diagnosisResults: dbResult
+          diagnosisResults: diagnosisResults
         });
       });
   }
