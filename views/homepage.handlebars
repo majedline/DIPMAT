@@ -2,113 +2,88 @@
   Main Homepage Body Handlebars File 
   HTML using MateralizeCSS Design
 -->
+<main>
+  <section id="homePage">
+    <!-- 2. Parallax Container -->
 
-<!-- 1. Navagation Bar -->
-<nav class="white" role="navigation">
-  <div class="nav-wrapper container">
-    <i class="fas fa-heartbeat logo"></i>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">Navbar Link</a></li>
-    </ul>
+    <div id="index-banner" class="parallax-container parallax-container-main">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
 
-    <ul id="nav-mobile" class="sidenav">
-      <li><a href="#">Navbar Link</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
+          <section data-aos="fade-up" data-aos-duration="2000">
+            <i class="fas fa-heartbeat logo light-blue-text text-lighten-3"></i>
+            <h1 class="companyName header center light-blue-text text-lighten-5">Dipmat Med</h1>
+          </section>
 
-<!-- 2. Parallax Container -->
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
+          <div class="row center " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2000">
+            <h5 class="header col s12 light-blue-text text-lighten-4">Sick, Hurt?</h5>
+          </div>
+          <div class="row center " data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2000">
+            <h5 class="header col s12 light-blue-text text-lighten-4">Were here to help</h5>
+          </div>
+
+          <div class="row center">
+            <a href="#aboutyou" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"
+              data-aos="fade-up" data-aos-duration="1000" data-aos-delay="3000">Get Started</a>
+          </div>
+          <br><br>
+
+        </div>
+      </div>
+      <div class="parallax"><img src="/images/bvParkTall.png" alt="Unsplashed background img 1"></div>
+    </div>
+
+    <!-- 3. Info Container 1 -->
     <div class="container">
-      <br><br>
-      <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-      </div>
-      <br><br>
+      <div class="section">
 
-    </div>
-  </div>
-  <div class="parallax"><img src="/images/background1.jpg" alt="Unsplashed background img 1"></div>
-</div>
-
-<!-- 3. Info Container 1 -->
-<div class="container">
-  <div class="section">
-
-    <!--   Icon Section   -->
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center">Speeds up development</h5>
-
-          <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-          <h5 class="center">User Experience Focused</h5>
-
-          <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-          <h5 class="center">Easy to work with</h5>
-
-          <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+        <!--   Icon Section   -->
+        <h5 id="aboutyou" class="center light brown-text scrollspy" data-aos="fade-up" data-aos-duration="1000">About
+          You
+        </h5>
+        <p class="center genText grey-text" data-aos="fade-up" data-aos-duration="1000">Before we can help you, we need
+          to learn a bit about you!</p>
+        <div class="row">
+          <form class="col s12 about-me">
+            <div class="row">
+              <div class="input-field col s6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <input id="first_name" type="text" class="validate">
+                <label for="first_name">First Name (Optional)</label>
+              </div>
+              <div class="input-field col s6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Last Name (Optional)</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <input id="birthYear" type="text" class="validate">
+                <label for="birthYear">Year of Birth (Optional)</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+                <select id="gender">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Perfer Not To say</option>
+                </select>
+                <label>Gender (Selection Required)</label>
+                <button class="btn waves-effect waves-light disabled" type="submit" id="contBtn">Continue
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+    </section>
+    <section id="preloader"></section>
+</main>
+{{> sections/footer}}
 
-  </div>
-</div>
-
-<footer class="page-footer teal">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">Company Bio</h5>
-        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-      </div>
-      <div class="col l3 s12">
-        <h5 class="white-text">Settings</h5>
-        <ul>
-          <li><a class="white-text" href="#!">Link 1</a></li>
-          <li><a class="white-text" href="#!">Link 2</a></li>
-          <li><a class="white-text" href="#!">Link 3</a></li>
-          <li><a class="white-text" href="#!">Link 4</a></li>
-        </ul>
-      </div>
-      <div class="col l3 s12">
-        <h5 class="white-text">Connect</h5>
-        <ul>
-          <li><a class="white-text" href="#!">Link 1</a></li>
-          <li><a class="white-text" href="#!">Link 2</a></li>
-          <li><a class="white-text" href="#!">Link 3</a></li>
-          <li><a class="white-text" href="#!">Link 4</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container">
-    Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-    </div>
-  </div>
-</footer>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- Front End Js Scripts --}}
+{{> scripts/scripts}}
+<script src="/js/homepage.js"></script>

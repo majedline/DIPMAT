@@ -2,3 +2,4 @@ models/index.js
 node_modules
 public/js/*.js
 public/fontawesome/js/*.js
+routes/*.js

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 var db = require("../models");
-var unirest = require("unirest");
+
 
 module.exports = function(app) {
   // // Get all examples
